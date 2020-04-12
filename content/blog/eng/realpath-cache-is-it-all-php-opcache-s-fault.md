@@ -102,7 +102,6 @@ To reproduce the cache issue, you have to run the following commands in parallel
 
 The following [video](https://www.youtube.com/watch?v=PNjyi42VwP4) shows the execution output.
 
-{{<img-lazy src="/images/realpath-cache-is-it-all-php-opcache-s-fault/demo_production.gif" title="Execution with configuration: production" label="Execution with configuration: production">}}
 
 As expected we are experiencing the cache issue: after a release switch, we're not seeing the right code as the output of an HTTP request.
 
@@ -119,7 +118,6 @@ Now we disable the OPCache extension and redo the test.
 
 The following [video](https://www.youtube.com/watch?v=WB78eE0kwUo) shows the output of this new execution.
 
-{{<img-lazy src="/images/realpath-cache-is-it-all-php-opcache-s-fault/demo_production_no_opcache.gif" title="Execution with configuration: production" label="Execution with configuration: production-no-opcache">}}
 
 This is unexpected, we are experiencing the previous behavior, thus something is missing from our reasoning: **it's not all OPCache's fault after all**.
 
@@ -220,7 +218,6 @@ Let's run our (hopefully) last test:
 
 The following [video](https://www.youtube.com/watch?v=Qry6cvUmf3c) shows the output of the last execution.
 
-{{<img-lazy src="/images/realpath-cache-is-it-all-php-opcache-s-fault/demo_production_no_realpath_cache.gif" title="Execution with configuration: production" label="Execution with configuration: production-no-realpath-cache">}}
 
 It's crucial to point out that our last configuration is **strongly discouraged** on a production environment, because it will force PHP to always resolve every path it encounters, with a negative impact on the performance.
 
